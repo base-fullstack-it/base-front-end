@@ -3,10 +3,11 @@ import { setupListeners } from "@reduxjs/toolkit/query/react";
 import logger from 'redux-logger'
 import {apiSlice} from "./apiSlice";
 import productReducer from "./slice/productSlice";
+import authReducer from "./slice/authSlice";
 
 export const store = configureStore({
   reducer: {
-
+    auth: authReducer,
     product: productReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },

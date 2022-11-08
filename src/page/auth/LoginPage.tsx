@@ -1,10 +1,26 @@
 import LoginFormik, {LoginFormValuesInterface} from "../../component/auth/LoginFormik";
 import {useNavigate} from "react-router-dom";
 import {Container, Grid, Link} from "@mui/material";
+import {useAppDispatch} from "../../redux/hooks";
+import {useLoginUserMutation} from "../../redux/api_slice/authApiSlice";
 
 export default () =>{
     const navigate = useNavigate();
-    const handleLogin = async (values:LoginFormValuesInterface) => {}
+    const dispatch = useAppDispatch();
+    const [
+        loginUser,
+        {
+            data: loginData,
+            isSuccess: isLoginSuccess,
+            isError: isLoginError,
+            error: loginError,
+        },
+    ] = useLoginUserMutation();
+
+    const handleLogin = async (values:LoginFormValuesInterface) => {
+        console.log(values,"SUBMITTER");
+        await loginUser(values);
+    }
     return  <Grid container style={{
             alignItems:"center",
             justifyContent:"center"

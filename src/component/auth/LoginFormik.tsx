@@ -5,6 +5,9 @@ import {Form, Formik} from 'formik';
 import ButtonWrapper from "../formik/Button";
 import SnackbarWrapper from "../formik/Snackbar";
 import TextFieldWrapper from "../formik/TextField";
+import {useLoginUserMutation} from "../../redux/api_slice/authApiSlice";
+import {useNavigate} from "react-router-dom";
+import {useAppDispatch} from "../../redux/hooks";
 
 export interface LoginFormValuesInterface {
     email:string;
@@ -25,17 +28,11 @@ const validationSchema = object({
 export default ({loginUser}:LoginFormInterface) => {
 
     const [open, setOpen] = useState(false)
-
-    // actions = { setSubmitting, resetForm, isSubmitting }
     const submitHandler = async (values:LoginFormValuesInterface, actions:any) => {
-        // setTimeout(() => {
-            // setSubmitting not needed with async
             actions.setSubmitting(false);
-            // actions.resetForm(initialFormState);//TODO uncomment this it works well some sort of inbuilt function
             setOpen(true);
             console.log(values,'SUBMISS'); // test
         await loginUser(values);
-        // }, 2000)
     }
     const handleClose = (event:any, reason:any) => {
         if (reason === "clickaway") {
