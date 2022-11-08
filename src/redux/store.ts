@@ -2,9 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query/react";
 import logger from 'redux-logger'
 import {apiSlice} from "./apiSlice";
+import productReducer from "./slice/productSlice";
 
 export const store = configureStore({
   reducer: {
+
+    product: productReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
