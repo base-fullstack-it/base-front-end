@@ -1,5 +1,8 @@
+import LoginFormik, {LoginFormValuesInterface} from "../../component/auth/LoginFormik";
+
 export default () =>{
+    const handleLogin = async (values:LoginFormValuesInterface) => {}
     return <>
-        Login Page
+        <LoginFormik loginUser={handleLogin} />
     </>
 }
