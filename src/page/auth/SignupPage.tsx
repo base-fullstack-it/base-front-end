@@ -1,5 +1,12 @@
+import SignupFormik, {SignupFormValuesInterface} from "../../component/auth/SignupFormik";
+
 export default () =>{
+
+    const handleRegister = async (values:SignupFormValuesInterface) => {
+
+    };
+
     return <>
-        SignupPage
+        <SignupFormik handleRegister={handleRegister} />
     </>
 }
