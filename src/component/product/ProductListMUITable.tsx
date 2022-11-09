@@ -11,6 +11,7 @@ import {v4 as uuidv4} from "uuid";
 import {useEffect, useState} from "react";
 import ProductDialog from "./ProductDialog";
 import {CardMedia, Typography} from "@mui/material";
+import SelectedProductDetailDialog from "./detail/SelectedProductDetailDialog";
 export const API_HOST = process.env.REACT_APP_API_URL;
 
 // export const getImage = (filename: string) =>
@@ -79,11 +80,7 @@ export default ({products}: {
             {modalValues.visible && console.log(selectedProduct,"IM FINISHED")}
 
             {modalValues.visible && selectedProduct && <ProductDialog modalValues={modalValues}>
-                <CardMedia>
-                    <img alt={`${selectedProduct!.name} : ${selectedProduct!.name}`}
-                         src={`${API_HOST}${selectedProduct!.imageLocation}`}/>
-                         {/*src={getImage(selectedProduct!.name)}/>*/}
-                </CardMedia>
+                <SelectedProductDetailDialog selectedProduct={selectedProduct}/>
             </ProductDialog>
             }
         </>

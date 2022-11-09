@@ -44,7 +44,7 @@ export default ({alterProduct}:ProductFormInterface) => {
     // actions = { setSubmitting, resetForm, isSubmitting }
     const submitHandler = async (values:ProductFormValuesInterface, actions:any) => {
 
-        console.log(values,'SUBMISS'); // test
+        // console.log(values,'SUBMISS'); // test
         await alterProduct(values);
     }
     const handleClose = (event:any, reason:any) => {

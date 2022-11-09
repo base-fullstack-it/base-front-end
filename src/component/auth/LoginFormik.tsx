@@ -31,7 +31,7 @@ export default ({loginUser}:LoginFormInterface) => {
     const submitHandler = async (values:LoginFormValuesInterface, actions:any) => {
             actions.setSubmitting(false);
             setOpen(true);
-            console.log(values,'SUBMISS'); // test
+            // console.log(values,'SUBMISS'); // test
         await loginUser(values);
     }
     const handleClose = (event:any, reason:any) => {
