@@ -12,8 +12,9 @@ import {useEffect} from "react";
 export default ({product}: {
     product: ReadonlyArray<Product> | undefined
 }) => {
+    if(typeof product === 'undefined')  return null;
     useEffect(()=>{
-        console.log(product);
+        if(typeof product === 'undefined') return;
     },[product])
     const modalValues = useModal();
     return (
@@ -33,17 +34,19 @@ export default ({product}: {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {/*{product.map((row) => (*/}
-                        {/*    <StyledTableRow style={{cursor: 'pointer'}}*/}
-                        {/*                    onClick={() => modalValues.handleModalId(String(row.id))} key={uuidv4()}>*/}
-                        {/*        <StyledTableCell align="left">{row.date}</StyledTableCell>*/}
-                        {/*        <StyledTableCell align="left">{row.name}</StyledTableCell>*/}
-                        {/*        <StyledTableCell align="left">{row.info}</StyledTableCell>*/}
-                        {/*        <StyledTableCell align="left">{row.reference_number}</StyledTableCell>*/}
-                        {/*        <StyledTableCell align="left">{row.image}</StyledTableCell>*/}
-                        {/*        <StyledTableCell align="left">{row.file}</StyledTableCell>*/}
-                        {/*    </StyledTableRow>*/}
-                        {/*))}*/}
+                        {product.map((row) => (
+                            <StyledTableRow style={{cursor: 'pointer'}}
+                                            onClick={() => modalValues.handleModalId(String(row.id))} key={uuidv4()}>
+                                <StyledTableCell align="left">{row.id}</StyledTableCell>
+                                <StyledTableCell align="left">{row.date}</StyledTableCell>
+                                <StyledTableCell align="left">{row.name}</StyledTableCell>
+                                <StyledTableCell align="left">{row.info}</StyledTableCell>
+                                <StyledTableCell align="left">{row.referenceNumber}</StyledTableCell>
+                                <StyledTableCell align="left">{row.country}</StyledTableCell>
+                                <StyledTableCell align="left">{row.image}</StyledTableCell>
+                                <StyledTableCell align="left">{row.file}</StyledTableCell>
+                            </StyledTableRow>
+                        ))}
                     </TableBody>
                 </>
             </StyledTableContainer>

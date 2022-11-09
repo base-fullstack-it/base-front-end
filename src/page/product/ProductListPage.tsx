@@ -4,6 +4,7 @@ import {useAppSelector} from "../../redux/hooks";
 import {selectProducts} from "../../redux/slice/productSlice";
 import {useProductsQuery} from "../../redux/api_slice/productApiSlice";
 import ProductListMUITable from "../../component/product/ProductListMUITable";
+import {useEffect} from "react";
 
 export default () => {
     const navigate = useNavigate();
