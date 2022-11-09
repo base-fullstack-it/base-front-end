@@ -1,7 +1,7 @@
 import {Container, Grid, InputLabel, LinearProgress, MenuItem, Typography} from "@mui/material";
 import React, {useState} from "react";
 import {boolean, date, number, object, string} from "yup";
-import {Field, Form, Formik} from 'formik';
+import {Field, Form, Formik, useFormikContext} from 'formik';
 import ButtonWrapper from "../formik/Button";
 import SnackbarWrapper from "../formik/Snackbar";
 import TextFieldWrapper from "../formik/TextField";
@@ -13,18 +13,19 @@ import {CountryEnum} from "../../model/Country.enum";
 //    readonly id: string;
 //     readonly name: string;
 //     readonly info: string;
-//     readonly reference_number: string;
+//     readonly referenceNumber: string;
 //     readonly country: string;
 export interface ProductFormValuesInterface {
     name:string;
     info:string;
-    reference_number:string;
+    referenceNumber:string;
     country:string;
+    file?:any;
 }
 const initialFormState = {
     name: "",
     info:"",
-    reference_number:"",
+    referenceNumber:"",
     country:"",
 }
 interface ProductFormInterface{
@@ -34,11 +35,10 @@ interface ProductFormInterface{
 const validationSchema = object({
     name: string().required("Name required"),
     info: string().required("Info required"),
-    reference_number: number().required("Reference Number required"),
+    referenceNumber: number().required("Reference Number required"),
     country: string().required("Country required"),
 })
 export default ({alterProduct}:ProductFormInterface) => {
-
     const [open, setOpen] = useState(false)
 
     // actions = { setSubmitting, resetForm, isSubmitting }
@@ -72,7 +72,7 @@ export default ({alterProduct}:ProductFormInterface) => {
                     onSubmit={submitHandler}
                 >
                     {
-                        ({ isSubmitting }) => (
+                        ({ isSubmitting,setFieldValue }) => (
                             <Form>
                                     <Grid p={1} item >
                                         <Typography align={"center"} style={{fontSize: "2rem" }}
@@ -96,7 +96,7 @@ export default ({alterProduct}:ProductFormInterface) => {
                                     </Grid>
                                     <Grid p={1} item>
                                         <TextFieldWrapper
-                                            name='reference_number'
+                                            name='referenceNumber'
                                             label="Reference Number"
                                             type='text'
                                         />
@@ -122,6 +122,10 @@ export default ({alterProduct}:ProductFormInterface) => {
                                                 )}
 
                                         </SelectField>
+                                        <input id="file" name="file" type="file" onChange={(event) => {
+                                            // @ts-ignore
+                                            setFieldValue("file", event.currentTarget.files[0]);
+                                        }} />
                                     </Grid>
 
                                     {

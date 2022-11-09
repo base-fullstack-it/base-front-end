@@ -17,7 +17,12 @@ export default () => {
 
     const updateAddProduct = async (values:ProductFormValuesInterface) => {
         console.log(values,'VALUESS')
-        await mutation(values);
+        const formData = new FormData();
+        formData.append('file', values.file);
+        // delete values.file;
+        const jsonBody = JSON.stringify(values);
+        formData.append('meta-data', jsonBody);
+        await mutation(formData);
     };
     return <>
         <ProductFormik

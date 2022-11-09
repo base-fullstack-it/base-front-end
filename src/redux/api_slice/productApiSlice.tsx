@@ -21,14 +21,32 @@ export const productApiSlice = apiWithTag.injectEndpoints(
             query: (id) => `product/${id}`,
             providesTags: ["Product"],
         }),
-        addProduct: builder.mutation<{}, ProductFormValuesInterface>({
-            query: (product) => ({
-                url: "product",
-                method: "POST",
-                body: product,
+        // addProduct: builder.mutation<{}, ProductFormValuesInterface>({
+        //     query: (product) => ({
+        //         url: "product",
+        //         method: "POST",
+        //         body: product,
+        //     }),
+        //     invalidatesTags: ["Product"],
+        // }),
+
+        addProduct: builder.mutation({
+                async queryFn(formData, _queryApi, _extraOptions, fetchWithBQ) {
+                    // upload with multipart/form-data
+                    // const formData = new FormData();
+                    // formData.append('file', file);
+                    // formData.append('meta-data', jsonBody);
+                    const response = await fetchWithBQ({
+                        url: 'product',
+                        method: 'POST',
+                        body: formData,
+                    });
+                    if (response.error) throw response.error;
+                    return response.data ? { data: response.data } : { error: response.error };
+                },
             }),
-            invalidatesTags: ["Product"],
-        }),
+
+
 
         updateProduct: builder.mutation<Product, Product>({
             query: ({ id, ...rest }) => ({

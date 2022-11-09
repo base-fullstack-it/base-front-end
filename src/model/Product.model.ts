@@ -3,8 +3,8 @@ export interface Product {
     readonly name: string;
     readonly date: string;
     readonly info: string;
-    readonly reference_number: string;
+    readonly referenceNumber: string;
     readonly country: string;
     readonly image: string;
-    readonly file: string;
+    readonly file: any;
 }
