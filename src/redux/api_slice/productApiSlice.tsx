@@ -14,7 +14,6 @@ export const productApiSlice = apiWithTag.injectEndpoints(
         products: builder.query<Product[], void>({
             query: () => ({
                 url: "product",
-                params: { start:"STARTER", end:"ENDER" }
             }),
             providesTags: ["Product"],
         }),
@@ -43,5 +42,6 @@ export const productApiSlice = apiWithTag.injectEndpoints(
 });
 
 export const {
-    useAddProductMutation
+    useAddProductMutation,
+    useProductsQuery
 } = productApiSlice;
