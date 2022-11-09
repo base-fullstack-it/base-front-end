@@ -44,7 +44,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
           url: "user",
           method: "post",
-          body: {user:{...body}},
+          body: {...body},
         };
       },
     }),

@@ -29,11 +29,11 @@ export default () =>{
         ))
     },[data]);
 
-    const handleRegister = async (values:SignupFormValuesInterface) => {
+    const handleRegister =  (values:SignupFormValuesInterface) => {
         console.log(values,'VALORES')
 
 
-        await registerUser(values);
+        registerUser(values);
 
     };
 

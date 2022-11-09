@@ -18,7 +18,7 @@ const initialFormState = {
     password:"",
 }
 interface SignupFormInterface{
-    handleRegister(values:SignupFormValuesInterface): Promise<void>;
+    handleRegister(values:SignupFormValuesInterface): void;
 }
 
 const validationSchema = object({
