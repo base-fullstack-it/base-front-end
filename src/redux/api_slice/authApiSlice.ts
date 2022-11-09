@@ -12,7 +12,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url:'oauth/token',
         method:'POST',
         headers: {
-          'Authorization': `Basic ${base64.encode('base:base')}`,
+          'Authorization': `Basic ${base64.encode('appreciate:appreciate')}`,
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: qs.stringify({
@@ -28,7 +28,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method:'POST',
         mode: 'cors',
         headers: {
-          'Authorization': `Basic ${base64.encode('base:base')}`,
+          'Authorization': `Basic ${base64.encode('appreciate:appreciate')}`,
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body:'grant_type=client_credentials'
@@ -41,7 +41,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
         password: string;
       }) => {
         return {
-          // url: "user?access_token=A0K20Ur54ljqyogf1oB4e7QYDI0",
+
           url: "user",
           method: "post",
           body: {user:{...body}},
