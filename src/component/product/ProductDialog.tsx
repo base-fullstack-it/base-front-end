@@ -8,19 +8,19 @@ interface LazyQueryDialogProps {
 export default (props: LazyQueryDialogProps) => {
     const {modalValues, children} = props;
 
-    useEffect(() => {
-        if (!modalValues.visible) return;
-        (async () => {
-            // await lazyQuery(
-            //     {
-            //         variables: {
-            //             input: {
-            //                 id: modalValues.modalId
-            //             }
-            //         }
-            //     });
-        })();
-    }, [modalValues.visible])
+    // useEffect(() => {
+    //     if (!modalValues.visible) return;
+    //     (async () => {
+    //         // await lazyQuery(
+    //         //     {
+    //         //         variables: {
+    //         //             input: {
+    //         //                 id: modalValues.modalId
+    //         //             }
+    //         //         }
+    //         //     });
+    //     })();
+    // }, [modalValues.visible])
 
     return <Dialog
         open={modalValues.visible}

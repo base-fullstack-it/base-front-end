@@ -6,5 +6,6 @@ export interface Product {
     readonly referenceNumber: string;
     readonly country: string;
     readonly image: string;
+    readonly imageLocation: string;
     readonly file: any;
 }
