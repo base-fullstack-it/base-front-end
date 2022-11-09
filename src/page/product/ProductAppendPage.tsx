@@ -16,8 +16,8 @@ export default () => {
     ] = useAddProductMutation();
 
     const updateAddProduct = async (values:ProductFormValuesInterface) => {
-
-        await mutation(values);
+        console.log(values,'VALUESS')
+        // await mutation(values);
     };
     return <>
         <ProductFormik

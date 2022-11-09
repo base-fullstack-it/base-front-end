@@ -1,10 +1,12 @@
-import {Container, Grid, LinearProgress, Typography} from "@mui/material";
+import {Container, Grid, InputLabel, LinearProgress, MenuItem, Typography} from "@mui/material";
 import React, {useState} from "react";
 import {boolean, date, number, object, string} from "yup";
-import {Form, Formik} from 'formik';
+import {Field, Form, Formik} from 'formik';
 import ButtonWrapper from "../formik/Button";
 import SnackbarWrapper from "../formik/Snackbar";
 import TextFieldWrapper from "../formik/TextField";
+import SelectField from "../formik/SelectField";
+import {CountryEnum} from "../../model/Country.enum";
 
 //Product Id will be uniquely created in the database based on an auto increment instead of a form value?
 //
@@ -32,7 +34,7 @@ interface ProductFormInterface{
 const validationSchema = object({
     name: string().required("Name required"),
     info: string().required("Info required"),
-    reference_number: string().required("Reference Number required"),
+    reference_number: number().required("Reference Number required"),
     country: string().required("Country required"),
 })
 export default ({alterProduct}:ProductFormInterface) => {
@@ -41,14 +43,9 @@ export default ({alterProduct}:ProductFormInterface) => {
 
     // actions = { setSubmitting, resetForm, isSubmitting }
     const submitHandler = async (values:ProductFormValuesInterface, actions:any) => {
-        // setTimeout(() => {
-            // setSubmitting not needed with async
-            actions.setSubmitting(false);
-            // actions.resetForm(initialFormState);//TODO uncomment this it works well some sort of inbuilt function
-            setOpen(true);
-            console.log(values,'SUBMISS'); // test
+
+        console.log(values,'SUBMISS'); // test
         await alterProduct(values);
-        // }, 2000)
     }
     const handleClose = (event:any, reason:any) => {
         if (reason === "clickaway") {
@@ -105,11 +102,26 @@ export default ({alterProduct}:ProductFormInterface) => {
                                         />
                                     </Grid>
                                     <Grid p={1} item>
-                                        <TextFieldWrapper
-                                            name='country'
-                                            label="Country"
-                                            type='text'
-                                        />
+                                        {/*<TextFieldWrapper*/}
+                                        {/*    name='country'*/}
+                                        {/*    label="Country"*/}
+                                        {/*    type='select'*/}
+                                        {/*/>*/}
+                                        <InputLabel id="demo-simple-select-label">Country</InputLabel>
+                                        <SelectField
+                                            name={"country"}
+                                            label={"Country"}
+                                            type={"select"}
+                                        >
+                                            {
+
+                                                Object.entries(CountryEnum).map(([key,value]) =>
+                                                    <MenuItem key={key} value={value}>
+                                                        {key}
+                                                </MenuItem>
+                                                )}
+
+                                        </SelectField>
                                     </Grid>
 
                                     {

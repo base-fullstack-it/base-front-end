@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {Container, Grid, Link} from "@mui/material";
 import {useAppDispatch} from "../../redux/hooks";
 import {useLoginUserMutation} from "../../redux/api_slice/authApiSlice";
+import {ACCESS_TOKEN_TYPES, setUser} from "../../redux/slice/authSlice";
 
 export default () =>{
     const navigate = useNavigate();
@@ -19,7 +20,13 @@ export default () =>{
 
     const handleLogin = async (values:LoginFormValuesInterface) => {
         console.log(values,"SUBMITTER");
-        await loginUser(values);
+        const data = await loginUser({...values}).unwrap();
+        dispatch(setUser(
+            {
+                name:"user",
+                token:data.access_token,
+                token_type: ACCESS_TOKEN_TYPES.user}
+        ))
     }
     return  <Grid container style={{
             alignItems:"center",
