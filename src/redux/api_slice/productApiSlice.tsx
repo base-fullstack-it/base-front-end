@@ -61,5 +61,6 @@ export const productApiSlice = apiWithTag.injectEndpoints(
 
 export const {
     useAddProductMutation,
-    useProductsQuery
+    useProductsQuery,
+    useLazyProductQuery
 } = productApiSlice;

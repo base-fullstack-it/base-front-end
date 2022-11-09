@@ -9,6 +9,8 @@ import {StyledTableCell} from "../mui/table/StyledTableCell";
 import {StyledTableRow} from "../mui/table/StyledTableRow";
 import {v4 as uuidv4} from "uuid";
 import {useEffect} from "react";
+import ProductDialog from "./ProductDialog";
+import {Typography} from "@mui/material";
 export default ({product}: {
     product: ReadonlyArray<Product> | undefined
 }) => {
@@ -29,8 +31,8 @@ export default ({product}: {
                                 <StyledTableCell align="left">Info</StyledTableCell>
                                 <StyledTableCell align="left">Reference Number</StyledTableCell>
                                 <StyledTableCell align="left">Country</StyledTableCell>
-                                <StyledTableCell align="left">Image</StyledTableCell>
-                                <StyledTableCell align="left">File</StyledTableCell>
+                                {/*<StyledTableCell align="left">Image</StyledTableCell>*/}
+                                {/*<StyledTableCell align="left">File</StyledTableCell>*/}
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -43,8 +45,8 @@ export default ({product}: {
                                 <StyledTableCell align="left">{row.info}</StyledTableCell>
                                 <StyledTableCell align="left">{row.referenceNumber}</StyledTableCell>
                                 <StyledTableCell align="left">{row.country}</StyledTableCell>
-                                <StyledTableCell align="left">{row.image}</StyledTableCell>
-                                <StyledTableCell align="left">{row.file}</StyledTableCell>
+                                {/*<StyledTableCell align="left">{row.image}</StyledTableCell>*/}
+                                {/*<StyledTableCell align="left">{row.file}</StyledTableCell>*/}
                             </StyledTableRow>
                         ))}
                     </TableBody>
@@ -56,6 +58,9 @@ export default ({product}: {
             {/*>*/}
             {/*    <OrganizationDialogContent/>*/}
             {/*</ApolloLazyQueryDialogContext>*/}
+            <ProductDialog modalValues={modalValues}>
+                <Typography>I am present</Typography>
+            </ProductDialog>
         </>
     );
 }
