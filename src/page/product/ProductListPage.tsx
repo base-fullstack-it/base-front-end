@@ -13,9 +13,10 @@ export default () => {
     } = useProductsQuery();
 
     return <>
-        <ProductListMUITable product={null}/>
         <Button variant={"outlined"}onClick={()=>navigate("create_update")}>
             Add Product
         </Button>
+        <ProductListMUITable product={null}/>
+
     </>
 }
