@@ -16,7 +16,7 @@ export default () => {
         <Button variant={"outlined"}onClick={()=>navigate("create_update")}>
             Add Product
         </Button>
-        <ProductListMUITable product={null}/>
+        <ProductListMUITable product={data}/>
 
     </>
 }

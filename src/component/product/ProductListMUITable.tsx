@@ -8,9 +8,13 @@ import {Product} from "../../model/Product.model";
 import {StyledTableCell} from "../mui/table/StyledTableCell";
 import {StyledTableRow} from "../mui/table/StyledTableRow";
 import {v4 as uuidv4} from "uuid";
+import {useEffect} from "react";
 export default ({product}: {
-    product: ReadonlyArray<Product> | null,
+    product: ReadonlyArray<Product> | undefined
 }) => {
+    useEffect(()=>{
+        console.log(product);
+    },[product])
     const modalValues = useModal();
     return (
         <>
