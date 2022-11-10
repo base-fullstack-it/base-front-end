@@ -9,8 +9,6 @@ export default ({id}:{id:string}) => {
         if(confirmation){
             mutation(id);
         }
-
-
     }
 
 return <Button variant={"contained"} color={"warning"} onClick={handleClick}>DELETE</Button>
