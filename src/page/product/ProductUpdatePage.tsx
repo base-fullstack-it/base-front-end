@@ -4,6 +4,7 @@ import {useLocation} from "react-router-dom";
 import SelectedProductDetailCard from "../../component/product/detail/SelectedProductDetailCard";
 import {useAppSelector} from "../../redux/hooks";
 import { selectProduct} from "../../redux/slice/productSlice";
+import SelectedProductDetailValueAggregate from "../../component/product/detail/SelectedProductDetailValueAggregate";
 
 export default () => {
     // const {state} = useLocation();
@@ -34,7 +35,7 @@ export default () => {
     };
     return <>
         {/*{console.log(selectedProduct,"SELECTADO")}*/}
-        {selectedProduct && <SelectedProductDetailCard selectedProduct={selectedProduct}/>}
+        {selectedProduct && <SelectedProductDetailValueAggregate selectedProduct={selectedProduct}/>}
         <ProductFormik
             alterProduct={updateAddProduct}
         />
