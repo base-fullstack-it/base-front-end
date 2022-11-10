@@ -1,15 +1,17 @@
-import { useLocation, Navigate, Outlet } from "react-router-dom"
+import {useLocation, Navigate, Outlet, useNavigate} from "react-router-dom"
 import LoadingToRedirect from "./LoadingToRedirect";
 import {ACCESS_TOKEN_TYPES, selectAuth} from "../redux/slice/authSlice";
 import {useAppSelector} from "../redux/hooks";
+import {useEffect} from "react";
 
 const RequireAuth = () => {
     const { token, token_type } = useAppSelector(selectAuth);
-    const location = useLocation();
-
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if(token && token_type === ACCESS_TOKEN_TYPES.user) navigate("/product");
+    },[])
     return (
-        token && token_type === ACCESS_TOKEN_TYPES.user ?
-            <Outlet /> : <LoadingToRedirect  redirectString={"/product"}/>
+            <Outlet />
     )
 }
 export default RequireAuth;
