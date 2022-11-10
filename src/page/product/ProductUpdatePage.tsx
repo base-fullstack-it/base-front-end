@@ -28,7 +28,8 @@ export default () => {
             formData.append('file', values.file);
             delete values.file;
         }
-        // values.id = selectedProduct.id;
+        values.id = selectedProduct!.id;
+        // if(values.country) delete values.country;
         const jsonBody = JSON.stringify(values);
         formData.append('meta-data', jsonBody);
         await mutation(formData);

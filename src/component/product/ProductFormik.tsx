@@ -16,18 +16,18 @@ import {CountryEnum} from "../../model/Country.enum";
 //     readonly referenceNumber: string;
 //     readonly country: string;
 export interface ProductFormValuesInterface {
-    name:string;
-    info:string;
-    referenceNumber:string;
-    country:string;
+    name:string | null;
+    info:string | null;
+    referenceNumber:string | null;
+    country:string | null;
     file?:any;
     id?: string;
 }
 const initialFormState = {
-    name: "",
-    info:"",
-    referenceNumber:"",
-    country:"",
+    name: null,
+    info:null,
+    referenceNumber:null,
+    country:null,
 }
 interface ProductFormInterface{
     alterProduct(values:ProductFormValuesInterface): Promise<void>;

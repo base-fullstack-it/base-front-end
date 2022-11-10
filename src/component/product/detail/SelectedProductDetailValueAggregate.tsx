@@ -10,10 +10,12 @@ export default ({selectedProduct}: { selectedProduct: Product }) =>{
         <Typography>{selectedProduct.info}</Typography>
         <Typography>{selectedProduct.id}</Typography>
         <Typography>{selectedProduct.date}</Typography>
-        <CardMedia>
-            <img alt={`${selectedProduct!.name} : ${selectedProduct!.name}`}
-                 src={`${API_HOST}${selectedProduct!.imageLocation}`}/>
-        </CardMedia>
+        {
+            selectedProduct.imageLocation && <CardMedia>
+                <img alt={`${selectedProduct!.name} : ${selectedProduct!.name}`}
+                     src={`${API_HOST}${selectedProduct!.imageLocation}`}/>
+            </CardMedia>
+        }
     </>
 
 }
