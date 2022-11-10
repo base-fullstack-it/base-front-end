@@ -14,16 +14,19 @@ export const productSlice = createSlice({
     name: "product",
     initialState,
     reducers: {
-        getProducts: (
-            state
+        setProduct: (
+            state,
+            action
         ) => {
-            // state.res = action.payload.res;
+            state.product = action.payload;
         },
     },
 });
 //
-export const selectProducts = (state: RootState) => state.product.product;
+export const selectProduct = (state: RootState) => state.product.product;
 //
-export const { getProducts } = productSlice.actions;
+export const { setProduct } = productSlice.actions;
 //
 export default productSlice.reducer;
+
+

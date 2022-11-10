@@ -10,8 +10,7 @@ import {StyledTableRow} from "../mui/table/StyledTableRow";
 import {v4 as uuidv4} from "uuid";
 import {useEffect, useState} from "react";
 import ProductDialog from "./ProductDialog";
-import {CardMedia, Typography} from "@mui/material";
-import SelectedProductDetailDialog from "./detail/SelectedProductDetailDialog";
+import SelectedProductDetailCard from "./detail/SelectedProductDetailCard";
 export const API_HOST = process.env.REACT_APP_API_URL;
 
 // export const getImage = (filename: string) =>
@@ -73,7 +72,7 @@ export default ({products}: {
             </StyledTableContainer>
 
             {modalValues.visible && selectedProduct && <ProductDialog modalValues={modalValues}>
-                <SelectedProductDetailDialog selectedProduct={selectedProduct}/>
+                <SelectedProductDetailCard selectedProduct={selectedProduct}/>
             </ProductDialog>
             }
         </>

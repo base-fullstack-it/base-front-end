@@ -3,12 +3,12 @@ import NavbarLogo from "./logo/NavbarLogo";
 import {useState} from "react";
 import NavbarGridTabs from "./NavbarGridTabs";
 import LogoutButton from "../auth/LogoutButton";
-import {useSelector} from "react-redux";
 import {ACCESS_TOKEN_TYPES, selectAuth} from "../../redux/slice/authSlice";
 import NavbarPointCloudButton from "./NavbarPointCloudButton";
+import {useAppSelector} from "../../redux/hooks";
 
 export default () => {
-    const {token, token_type} = useSelector(selectAuth);
+    const {token, token_type} = useAppSelector(selectAuth);
     return (
         <AppBar
             position={"sticky"}

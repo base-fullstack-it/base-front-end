@@ -12,6 +12,6 @@ export default ({selectedProduct}: { selectedProduct: Product }) => {
                  src={`${API_HOST}${selectedProduct!.imageLocation}`}/>
         </CardMedia>
         <DeleteButton id={selectedProduct.id}/>
-        <EditButton/>
+        <EditButton selectedProduct={selectedProduct} />
     </Card>
 }

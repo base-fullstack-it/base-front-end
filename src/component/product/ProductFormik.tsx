@@ -21,6 +21,7 @@ export interface ProductFormValuesInterface {
     referenceNumber:string;
     country:string;
     file?:any;
+    id?: string;
 }
 const initialFormState = {
     name: "",
@@ -92,6 +93,7 @@ export default ({alterProduct}:ProductFormInterface) => {
                                             name='info'
                                             label="Info"
                                             type='text'
+
                                         />
                                     </Grid>
                                     <Grid p={1} item>
