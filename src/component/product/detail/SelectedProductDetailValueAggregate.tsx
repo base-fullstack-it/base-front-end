@@ -13,6 +13,7 @@ export default ({selectedProduct}: { selectedProduct: Product }) =>{
         {
             selectedProduct.imageLocation && <CardMedia>
                 <img alt={`${selectedProduct!.name} : ${selectedProduct!.name}`}
+                     style={{ width: '300px', height: '300px' }}
                      src={`${API_HOST}${selectedProduct!.imageLocation}`}/>
             </CardMedia>
         }
