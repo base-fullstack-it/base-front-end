@@ -10,13 +10,15 @@ import LoginPage from './page/auth/LoginPage';
 import SignupPage from "./page/auth/SignupPage";
 import RequireNoAuth from "./route/RequireNoAuth";
 import RequireAuth from "./route/RequireAuth";
-import {useAppDispatch} from "./redux/hooks";
-import {setUser} from "./redux/slice/authSlice";
+import {useAppDispatch, useAppSelector} from "./redux/hooks";
+import {ACCESS_TOKEN_TYPES, selectAuth, setUser} from "./redux/slice/authSlice";
 import PointCloudPage from './page/point_cloud/PointCloudPage';
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     const dispatch = useAppDispatch();
-
+    const {token, token_type} = useAppSelector(selectAuth);
     const user = JSON.parse(localStorage.getItem("user") || "{}");
 
     useEffect(() => {
@@ -29,12 +31,11 @@ function App() {
                     <Navbar/>
                     <Routes>
                         {
-                            user && user.token ?
+                            token && token_type === ACCESS_TOKEN_TYPES.user ?
                                 <Route path="/" element={<Navigate to="/product" replace/>}/>
                                 :
                                 <Route path="/" element={<Navigate to="/login" replace/>}/>
                         }
-
                         <Route path="/" element={<Navigate to="/login" replace/>}/>
                         {/* public routes */}
                         <Route element={<RequireNoAuth/>}>
@@ -46,10 +47,10 @@ function App() {
                             <Route path="/product/*" element={<ProductRoutes/>}/>
                             <Route path="/point_cloud" element={<PointCloudPage/>}/>
                         </Route>
-                        {/*<Route path="/" element={<HomePage/>} />*/}
                     </Routes>
                 </BrowserRouter>
             </CssBaseline>
+            <ToastContainer />
         </ThemeProvider>
     );
 }

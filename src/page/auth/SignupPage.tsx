@@ -4,8 +4,8 @@ import {useAppDispatch} from "../../redux/hooks";
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import {ACCESS_TOKEN_TYPES, setUser} from "../../redux/slice/authSlice";
-import {User} from "../../model/User.model";
-import {string} from "yup";
+
+import {toast} from "react-toastify";
 
 export default () =>{
     const {data,isLoading} = useGetAppAccessTokenQuery();
@@ -31,12 +31,18 @@ export default () =>{
 
     const handleRegister =  (values:SignupFormValuesInterface) => {
         console.log(values,'VALORES')
-
-
         registerUser(values);
-        navigate("/login");
+
 
     };
+    useEffect(() => {
+        if (isRegisterError) toast.error((registerError as any).data.message);
+    }, [isRegisterError]);
+    useEffect(() => {
+        if (!isRegisterSuccess) return;
+         toast.success("Welcome! Now Log in");
+         navigate("/login");
+    }, [isRegisterSuccess]);
 
     return <>
         <SignupFormik handleRegister={handleRegister} />

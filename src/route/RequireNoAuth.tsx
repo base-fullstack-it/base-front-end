@@ -6,7 +6,6 @@ import {useEffect} from "react";
 
 export default () => {
     const { token, token_type } = useAppSelector(selectAuth);
-    console.log(token,token_type);
     const navigate = useNavigate();
     useEffect(()=>{
         if(!token || token_type !== ACCESS_TOKEN_TYPES.user) navigate("/login");

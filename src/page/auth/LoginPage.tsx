@@ -4,7 +4,8 @@ import {Container, Grid, Link} from "@mui/material";
 import {useAppDispatch} from "../../redux/hooks";
 import {useLoginUserMutation} from "../../redux/api_slice/authApiSlice";
 import {ACCESS_TOKEN_TYPES, setUser} from "../../redux/slice/authSlice";
-
+import {toast} from "react-toastify";
+import {useEffect} from "react";
 export default () =>{
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
@@ -29,6 +30,10 @@ export default () =>{
         ))
         navigate("/product/add");
     }
+    useEffect(() => {
+        if(!isLoginSuccess) return;
+        toast.success("You are logged in");
+    },[isLoginSuccess])
     return  <Grid container style={{
             alignItems:"center",
             justifyContent:"center"
