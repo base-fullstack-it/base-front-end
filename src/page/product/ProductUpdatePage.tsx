@@ -5,7 +5,7 @@ import SelectedProductDetailCard from "../../component/product/detail/SelectedPr
 import {useAppSelector} from "../../redux/hooks";
 import { selectProduct} from "../../redux/slice/productSlice";
 import SelectedProductDetailValueAggregate from "../../component/product/detail/SelectedProductDetailValueAggregate";
-import {Grid, Typography} from "@mui/material";
+import {Container, Grid, Typography} from "@mui/material";
 import React from "react";
 
 export default () => {
@@ -36,18 +36,21 @@ export default () => {
         formData.append('meta-data', jsonBody);
         await mutation(formData);
     };
-    return <>
-        {/*{console.log(selectedProduct,"SELECTADO")}*/}
-        {selectedProduct && <SelectedProductDetailValueAggregate selectedProduct={selectedProduct}/>}
+    return <Container >
         <Grid p={1} item >
             <Typography align={"center"} style={{fontSize: "2rem" }}
             >
                 Update Product
+            </Typography>
+            <Typography align={"center"}
+            >
+                If left blank the value will remain the same as the values shown below the form
             </Typography>
         </Grid>
         <ProductFormik
             alterProduct={updateAddProduct}
             isUpdateForm={true}
         />
-    </>
+        {selectedProduct && <SelectedProductDetailValueAggregate selectedProduct={selectedProduct}/>}
+    </Container>
 }
