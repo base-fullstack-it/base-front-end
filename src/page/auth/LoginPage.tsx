@@ -5,10 +5,13 @@ import {useAppDispatch} from "../../redux/hooks";
 import {useLoginUserMutation} from "../../redux/api_slice/authApiSlice";
 import {ACCESS_TOKEN_TYPES, setUser} from "../../redux/slice/authSlice";
 import {toast} from "react-toastify";
-import {useEffect} from "react";
+import {useContext, useEffect} from "react";
+import {NavbarTabValuesI} from "../../hook/useNavbarTabValues";
+import {NavbarTabValuesContext} from "../../context/NavbarTabValuesContextWrapper";
 export default () =>{
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const navbarTabValues = useContext<NavbarTabValuesI>(NavbarTabValuesContext);
     const [
         loginUser,
         {
@@ -37,6 +40,7 @@ export default () =>{
     useEffect(() => {
         if(!isLoginSuccess) return;
         toast.success("You are logged in");
+        navbarTabValues.handleValues(1);
         navigate("/product/add");
     },[isLoginSuccess])
 

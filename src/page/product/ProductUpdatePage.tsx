@@ -4,11 +4,14 @@ import {useAppSelector} from "../../redux/hooks";
 import { selectProduct} from "../../redux/slice/productSlice";
 import SelectedProductDetailValueAggregate from "../../component/product/detail/SelectedProductDetailValueAggregate";
 import {Container, Grid, Typography} from "@mui/material";
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
+import {NavbarTabValuesI} from "../../hook/useNavbarTabValues";
+import {NavbarTabValuesContext} from "../../context/NavbarTabValuesContextWrapper";
 
 export default () => {
+    const navbarTabValues = useContext<NavbarTabValuesI>(NavbarTabValuesContext);
     const selectedProduct = useAppSelector(selectProduct);
     const navigate = useNavigate();
     const [
@@ -41,6 +44,8 @@ export default () => {
         if (!isSuccess) return;
         toast.success("Product successfully updated");
         navigate("/product");
+        navbarTabValues.handleValues(0);
+
     }, [isSuccess]);
     return <Container style={{marginTop:25}}>
         <Grid container style={{flexDirection:"row"}} >

@@ -1,21 +1,17 @@
 import {Grid, Tab, Tabs} from "@mui/material";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Link} from "react-router-dom";
+import  {NavbarTabValuesI} from "../../hook/useNavbarTabValues";
+import {NavbarTabValuesContext} from "../../context/NavbarTabValuesContextWrapper";
 
-const links = [
-    "product",
-]
-const link_label = [
-    "product_label"
-]
 export default () => {
-    const [value, setValue] = useState<string>();
+    const navbarTabValues = useContext<NavbarTabValuesI>(NavbarTabValuesContext);
     return (
             <Tabs
                 indicatorColor={"primary"}
                 textColor={"inherit"}
-                value={value}
-                onChange={(e, val) => setValue(val)}
+                value={navbarTabValues.values}
+                onChange={(e, val) => navbarTabValues.handleValues(val)}
             >
                     <Tab component={Link} label={"Products"} to={"/product"} />
                     <Tab component={Link} label={"Add Product"} to={"/product/add"} />

@@ -1,12 +1,14 @@
 import ProductFormik, {ProductFormValuesInterface} from "../../component/product/ProductFormik";
 import {useAddProductMutation} from "../../redux/api_slice/productApiSlice";
 import {Grid, Typography} from "@mui/material";
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
+import {NavbarTabValuesI} from "../../hook/useNavbarTabValues";
+import {NavbarTabValuesContext} from "../../context/NavbarTabValuesContextWrapper";
 
 export default () => {
-
+    const navbarTabValues = useContext<NavbarTabValuesI>(NavbarTabValuesContext);
     const [
         mutation,
         {
@@ -19,7 +21,6 @@ export default () => {
     const navigate = useNavigate();
 
     const updateAddProduct = async (values: ProductFormValuesInterface) => {
-        console.log(values, 'VALUESS');
         const formData = new FormData();
         if (values.file) {
             formData.append('file', values.file);
@@ -36,6 +37,7 @@ export default () => {
     useEffect(() => {
         if (!isSuccess) return;
         toast.success("Product successfully created");
+        navbarTabValues.handleValues(0);
         navigate("/product")
     }, [isSuccess]);
 
