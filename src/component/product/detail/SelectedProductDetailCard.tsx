@@ -1,4 +1,4 @@
-import {Card, CardContent, CardHeader, CardMedia, Typography} from "@mui/material";
+import {Card, CardContent, CardHeader, CardMedia, Grid, Typography} from "@mui/material";
 import * as React from "react";
 import {API_HOST} from "../ProductListMUITable";
 import {Product} from "../../../model/Product.model";
@@ -11,8 +11,14 @@ export default ({selectedProduct}: { selectedProduct: Product }) => {
         <Card sx={{minWidth: 275}}>
             <CardContent>
                 <SelectedProductDetailValueAggregate selectedProduct={selectedProduct}/>
-                <DeleteButton id={selectedProduct.id}/>
-                <EditButton selectedProduct={selectedProduct}/>
+                <Grid container>
+                    <Grid item style={{marginRight:6}}>
+                        <DeleteButton id={selectedProduct.id}/>
+                    </Grid>
+                    <Grid item>
+                        <EditButton selectedProduct={selectedProduct}/>
+                    </Grid>
+                </Grid>
             </CardContent>
         </Card>)
 }

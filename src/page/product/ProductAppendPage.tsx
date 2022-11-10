@@ -40,7 +40,6 @@ export default () => {
 
                       spacing={2}
     >
-
         <ProductFormik
             alterProduct={updateAddProduct}
             isUpdateForm={false}
