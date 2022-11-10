@@ -24,6 +24,7 @@ export default () => {
                     <NavbarLogo/>
                     <Grid item xs={mediaQuery ? 1: 4}/>
                     {token && token_type === ACCESS_TOKEN_TYPES.user && <>
+
                         <Grid item xs={mediaQuery ? 2: 1}>
                             <ProductNavigateListButton/>
                         </Grid>
