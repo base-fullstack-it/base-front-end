@@ -22,27 +22,30 @@ export default () => {
             <Toolbar>
                 <Grid sx={{placeItems: "center"}} container>
                     <NavbarLogo/>
-                    <Grid item xs={mediaQuery ? 1: 4}/>
+                    <Grid item xs={mediaQuery ? 1: 2}/>
                     {token && token_type === ACCESS_TOKEN_TYPES.user && <>
+                    <Grid item xs={6}>
+                        <NavbarGridTabs/>
 
-                        <Grid item xs={mediaQuery ? 2: 1}>
-                            <ProductNavigateListButton/>
-                        </Grid>
-                        <Grid item xs={mediaQuery ? 2:1}>
-                            <ProductNavigateCreateUpdateButton/>
-                        </Grid>
-                        <Grid item xs={mediaQuery ? 2:1}>
-                            <NavbarPointCloudButton/>
-                        </Grid>
-                        <Grid item xs={mediaQuery ? 2:1}>
+                        {/*<Grid item xs={mediaQuery ? 2: 1}>*/}
+                        {/*    <ProductNavigateListButton/>*/}
+                        {/*</Grid>*/}
+                        {/*<Grid item xs={mediaQuery ? 2:1}>*/}
+                        {/*    <ProductNavigateCreateUpdateButton/>*/}
+                        {/*</Grid>*/}
+                        {/*<Grid item xs={mediaQuery ? 2:1}>*/}
+                        {/*    <NavbarPointCloudButton/>*/}
+                        {/*</Grid>*/}
+                        {/*<Grid item xs={mediaQuery ? 2:1}>*/}
+                    </Grid>
                             <LogoutButton/>
-                        </Grid>
+                        {/*</Grid>*/}
+
                     </>
                     }
 
                 </Grid>
 
-                <NavbarGridTabs/>
             </Toolbar>
         </AppBar>
 

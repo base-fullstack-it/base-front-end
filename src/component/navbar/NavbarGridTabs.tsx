@@ -11,19 +11,15 @@ const link_label = [
 export default () => {
     const [value, setValue] = useState<string>();
     return (
-        <Grid item xs={6}>
-
-            {/*TODO RETURN TO THIS MUI ERROR*/}
-            {/*<Tabs*/}
-            {/*    indicatorColor={"primary"}*/}
-            {/*    textColor={"inherit"}*/}
-            {/*    value={value}*/}
-            {/*    onChange={(e, val) => setValue(val)}*/}
-            {/*>*/}
-            {/*    {links.map((link, index) => (*/}
-            {/*        <Tab component={Link} label={link} to={"/"+link} />*/}
-            {/*    ))}*/}
-            {/*</Tabs>*/}
-        </Grid>
+            <Tabs
+                indicatorColor={"primary"}
+                textColor={"inherit"}
+                value={value}
+                onChange={(e, val) => setValue(val)}
+            >
+                    <Tab component={Link} label={"Products"} to={"/product"} />
+                    <Tab component={Link} label={"Add Product"} to={"/product/add"} />
+                    <Tab component={Link} label={"Point Cloud Portal"} to={"/point_cloud"} />
+            </Tabs>
     )
 }
