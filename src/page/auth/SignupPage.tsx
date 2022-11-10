@@ -34,6 +34,7 @@ export default () =>{
 
 
         registerUser(values);
+        navigate("/login");
 
     };
 

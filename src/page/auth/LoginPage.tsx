@@ -27,6 +27,7 @@ export default () =>{
                 token:data.access_token,
                 token_type: ACCESS_TOKEN_TYPES.user}
         ))
+        navigate("/product");
     }
     return  <Grid container style={{
             alignItems:"center",

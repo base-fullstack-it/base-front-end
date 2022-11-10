@@ -12,6 +12,7 @@ export default () => {
     const [value, setValue] = useState<string>();
     return (
         <Grid item xs={6}>
+
             {/*TODO RETURN TO THIS MUI ERROR*/}
             {/*<Tabs*/}
             {/*    indicatorColor={"primary"}*/}
