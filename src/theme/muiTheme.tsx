@@ -6,6 +6,7 @@ const muiTheme = createTheme({
         primary: {
             main: blue[500],
         },
+
         // secondary: {
         //     main: green[500],
         // }

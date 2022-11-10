@@ -14,6 +14,7 @@ export default () => {
 return <Button variant={"contained"} color={"primary"}
                style={{backgroundColor: '#2b79e3',
                    color: 'white',
+                   marginLeft:4
                    // fontSize:"1.2rem"
                }}
                onClick={()=>handleLogout()}>logout</Button>
