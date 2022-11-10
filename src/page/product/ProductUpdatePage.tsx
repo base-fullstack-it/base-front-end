@@ -36,21 +36,26 @@ export default () => {
         formData.append('meta-data', jsonBody);
         await mutation(formData);
     };
-    return <Container >
-        <Grid p={1} item >
+    return <Container style={{marginTop:25}}>
+        <Grid container style={{flexDirection:"row"}} >
+        <Grid item>
+            {selectedProduct && <SelectedProductDetailValueAggregate selectedProduct={selectedProduct}/>}
+        </Grid>
+            <Grid item xs={1}/>
+        <Grid item >
             <Typography align={"center"} style={{fontSize: "2rem" }}
             >
                 Update Product
             </Typography>
             <Typography align={"center"}
             >
-                If left blank the value will remain the same as the values shown below the form
+                If left blank the value will remain the same
             </Typography>
-        </Grid>
         <ProductFormik
             alterProduct={updateAddProduct}
             isUpdateForm={true}
         />
-        {selectedProduct && <SelectedProductDetailValueAggregate selectedProduct={selectedProduct}/>}
+        </Grid>
+    </Grid>
     </Container>
 }
