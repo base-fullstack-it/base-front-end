@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react';
-
-import {Button, CssBaseline, ThemeProvider} from "@mui/material";
+import {CssBaseline, ThemeProvider} from "@mui/material";
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import muiTheme from "./theme/muiTheme";
-import HomePage from "./page/HomePage";
 import Navbar from "./component/navbar/Navbar";
 import ProductRoutes from "./route/ProductRoutes";
 import LoginPage from './page/auth/LoginPage';

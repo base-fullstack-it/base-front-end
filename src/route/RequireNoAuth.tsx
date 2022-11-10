@@ -1,4 +1,4 @@
-import {useLocation, Navigate, Outlet, useNavigate} from "react-router-dom"
+import {Outlet, useNavigate} from "react-router-dom"
 import {ACCESS_TOKEN_TYPES, selectAuth} from "../redux/slice/authSlice";
 import {useAppSelector} from "../redux/hooks";
 import {useEffect} from "react";

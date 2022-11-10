@@ -1,6 +1,6 @@
 import LoginFormik, {LoginFormValuesInterface} from "../../component/auth/LoginFormik";
 import {useNavigate} from "react-router-dom";
-import {Container, Grid, Link} from "@mui/material";
+import { Grid, Link} from "@mui/material";
 import {useAppDispatch} from "../../redux/hooks";
 import {useLoginUserMutation} from "../../redux/api_slice/authApiSlice";
 import {ACCESS_TOKEN_TYPES, setUser} from "../../redux/slice/authSlice";
@@ -31,9 +31,14 @@ export default () =>{
         navigate("/product/add");
     }
     useEffect(() => {
+        if (isLoginError) toast.error((loginError as any).data.message);
+    }, [isLoginError]);
+
+    useEffect(() => {
         if(!isLoginSuccess) return;
         toast.success("You are logged in");
     },[isLoginSuccess])
+
     return  <Grid container style={{
             alignItems:"center",
             justifyContent:"center"
