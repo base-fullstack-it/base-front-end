@@ -71,13 +71,6 @@ export default ({products}: {
                     </TableBody>
                 </>
             </StyledTableContainer>
-            {/*<ApolloLazyQueryDialogContext*/}
-            {/*    modalValues={modalValues}*/}
-            {/*    documentNode={GET_ORGANIZATION_DATA}*/}
-            {/*>*/}
-            {/*    <OrganizationDialogContent/>*/}
-            {/*</ApolloLazyQueryDialogContext>*/}
-            {modalValues.visible && console.log(selectedProduct,"IM FINISHED")}
 
             {modalValues.visible && selectedProduct && <ProductDialog modalValues={modalValues}>
                 <SelectedProductDetailDialog selectedProduct={selectedProduct}/>
