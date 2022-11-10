@@ -11,6 +11,8 @@ import {v4 as uuidv4} from "uuid";
 import {useEffect, useState} from "react";
 import ProductDialog from "./ProductDialog";
 import SelectedProductDetailCard from "./detail/SelectedProductDetailCard";
+import {Container} from '@mui/material';
+
 export const API_HOST = process.env.REACT_APP_API_URL;
 
 // export const getImage = (filename: string) =>
@@ -18,15 +20,15 @@ export const API_HOST = process.env.REACT_APP_API_URL;
 export default ({products}: {
     products: ReadonlyArray<Product> | undefined
 }) => {
-    if(typeof products === 'undefined')  return null;
+    if (typeof products === 'undefined') return null;
     const modalValues = useModal();
     const [selectedProduct, setSelectedProduct] = useState<Product | undefined>();
-    useEffect(()=>{
-        if(typeof products === 'undefined') return;
-    },[products])
+    useEffect(() => {
+        if (typeof products === 'undefined') return;
+    }, [products])
 
-    useEffect(()=>{
-        if(modalValues.visible == false) setSelectedProduct(undefined);
+    useEffect(() => {
+        if (modalValues.visible == false) setSelectedProduct(undefined);
         const p = products.find(x => x.id == modalValues.modalId)
         // console.log(products,'pp')
         // console.log(modalValues,'pp')
@@ -34,7 +36,7 @@ export default ({products}: {
             p!
         )
 
-    },[modalValues.visible])
+    }, [modalValues.visible])
 
 
     return (
@@ -43,14 +45,14 @@ export default ({products}: {
                 <>
                     <TableHead>
                         <TableRow>
-                                <StyledTableCell align="left">Id</StyledTableCell>
-                                <StyledTableCell align="left">Date</StyledTableCell>
-                                <StyledTableCell align="left">Name</StyledTableCell>
-                                <StyledTableCell align="left">Info</StyledTableCell>
-                                <StyledTableCell align="left">Reference Number</StyledTableCell>
-                                <StyledTableCell align="left">Country</StyledTableCell>
-                                {/*<StyledTableCell align="left">Image</StyledTableCell>*/}
-                                {/*<StyledTableCell align="left">File</StyledTableCell>*/}
+                            <StyledTableCell align="left">Id</StyledTableCell>
+                            <StyledTableCell align="left">Date</StyledTableCell>
+                            <StyledTableCell align="left">Name</StyledTableCell>
+                            <StyledTableCell align="left">Info</StyledTableCell>
+                            <StyledTableCell align="left">Reference Number</StyledTableCell>
+                            <StyledTableCell align="left">Country</StyledTableCell>
+                            {/*<StyledTableCell align="left">Image</StyledTableCell>*/}
+                            {/*<StyledTableCell align="left">File</StyledTableCell>*/}
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -72,7 +74,7 @@ export default ({products}: {
             </StyledTableContainer>
 
             {modalValues.visible && selectedProduct && <ProductDialog modalValues={modalValues}>
-                <SelectedProductDetailCard selectedProduct={selectedProduct}/>
+                    <SelectedProductDetailCard selectedProduct={selectedProduct}/>
             </ProductDialog>
             }
         </>
