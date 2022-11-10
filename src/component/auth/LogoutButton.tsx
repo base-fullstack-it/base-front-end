@@ -11,5 +11,10 @@ export default () => {
         navigate("/login");
     }
 
-return <Button variant={"contained"} color={"primary"} onClick={()=>handleLogout()}>logout</Button>
+return <Button variant={"contained"} color={"primary"}
+               style={{backgroundColor: '#2b79e3',
+                   color: 'white',
+                   // fontSize:"1.2rem"
+               }}
+               onClick={()=>handleLogout()}>logout</Button>
 }
