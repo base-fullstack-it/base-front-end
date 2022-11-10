@@ -4,6 +4,7 @@ import {useLoginUserMutation} from "../../redux/api_slice/authApiSlice";
 import {useAddProductMutation} from "../../redux/api_slice/productApiSlice";
 import {Grid, Typography} from "@mui/material";
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 export default () => {
 
@@ -16,6 +17,7 @@ export default () => {
             error,
         },
     ] = useAddProductMutation();
+    const navigate = useNavigate();
 
     const updateAddProduct = async (values: ProductFormValuesInterface) => {
         console.log(values, 'VALUESS');
@@ -27,6 +29,7 @@ export default () => {
         const jsonBody = JSON.stringify(values);
         formData.append('meta-data', jsonBody);
         await mutation(formData);
+        navigate("/product")
     };
     return <>
         <Grid p={1} item>
