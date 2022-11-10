@@ -8,7 +8,7 @@ const RequireAuth = () => {
     const { token, token_type } = useAppSelector(selectAuth);
     const navigate = useNavigate();
     useEffect(()=>{
-        if(token && token_type === ACCESS_TOKEN_TYPES.user) navigate("/product");
+        if(token && token_type === ACCESS_TOKEN_TYPES.user) navigate("/product/add");
     },[])
     return (
             <Outlet />

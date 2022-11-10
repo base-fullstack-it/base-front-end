@@ -22,13 +22,13 @@ export default () =>{
     const handleLogin = async (values:LoginFormValuesInterface) => {
         console.log(values,"SUBMITTER");
         const data = await loginUser({...values}).unwrap();
-        dispatch(setUser(
+        await dispatch(setUser(
             {
                 name:"user",
                 token:data.access_token,
                 token_type: ACCESS_TOKEN_TYPES.user}
         ))
-        navigate("/product/add");
+
     }
     useEffect(() => {
         if (isLoginError) toast.error((loginError as any).data.message);
@@ -37,6 +37,7 @@ export default () =>{
     useEffect(() => {
         if(!isLoginSuccess) return;
         toast.success("You are logged in");
+        navigate("/product/add");
     },[isLoginSuccess])
 
     return  <Grid container style={{

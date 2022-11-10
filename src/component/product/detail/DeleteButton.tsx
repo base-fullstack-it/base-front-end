@@ -7,7 +7,7 @@ import {toast} from "react-toastify";
 export default ({id,modalValues}:{modalValues: ModalHookInterface,id:string}) => {
     const [mutation,
         {
-            data: loginData,
+            data,
             isSuccess,
             isError,
             error,
@@ -17,7 +17,6 @@ export default ({id,modalValues}:{modalValues: ModalHookInterface,id:string}) =>
     const handleClick = () => {
         const confirmation = window.confirm(" Are you sure you want to delete this product?");
         if(confirmation){
-            modalValues.toggle();
             mutation(id);
         }
     }
@@ -25,7 +24,10 @@ export default ({id,modalValues}:{modalValues: ModalHookInterface,id:string}) =>
         if (isError) toast.error((error as any).data.message);
     }, [isError]);
     useEffect(() => {
-        if (isSuccess) toast.success("You have deleted this product");
+        if (isSuccess) {
+            toast.success("You have deleted this product");
+            modalValues.toggle();
+        }
     }, [isSuccess]);
 
 return <Button variant={"contained"} color={"warning"} onClick={handleClick}>DELETE</Button>
