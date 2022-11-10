@@ -10,11 +10,14 @@ export default () => {
     } = useProductsQuery();
 
     return <Container style={{marginTop:20}}>
+
         <Typography style={{margin:10}}>
             Click on a row in order to see the image and to perform an action on the product
         </Typography>
-
-        <ProductListMUITable products={data}/>
+        {!isLoading ?
+            <ProductListMUITable products={data}/> : "Loading"
+        }
+        {!data && "If You are expecting data please refresh the page or contact customer support if issue persist"}
 
     </Container>
 }
