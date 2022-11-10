@@ -1,4 +1,4 @@
-import {Container, Grid, InputLabel, LinearProgress, MenuItem, Typography} from "@mui/material";
+import {Container, Grid, InputLabel, LinearProgress, MenuItem, Typography,Input} from "@mui/material";
 import React, {useState} from "react";
 import {boolean, date, number, object, string} from "yup";
 import {Field, Form, Formik, useFormikContext} from 'formik';
@@ -104,10 +104,13 @@ export default ({alterProduct,isUpdateForm}:ProductFormInterface) => {
                                                 )}
 
                                         </SelectField>
-                                        <input id="file" name="file" type="file" onChange={(event) => {
-                                            // @ts-ignore
-                                            setFieldValue("file", event.currentTarget.files[0]);
-                                        }} />
+                                        <Grid item p={1}>
+                                        <InputLabel>Image:</InputLabel>
+                                            <Input id={"file"} name={"file"} type={"file"}onChange={(event) => {
+                                                // @ts-ignore
+                                                setFieldValue("file", event.currentTarget.files[0]);
+                                            }} />
+                                        </Grid>
                                     </Grid>
 
                                     {
