@@ -5,15 +5,16 @@ import {Product} from "../../../model/Product.model";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 import SelectedProductDetailValueAggregate from "./SelectedProductDetailValueAggregate";
+import {ModalHookInterface} from "../../../hook/useModal";
 
-export default ({selectedProduct}: { selectedProduct: Product }) => {
+export default ({selectedProduct,modalValues}: {modalValues: ModalHookInterface, selectedProduct: Product }) => {
     return (
         <Card sx={{minWidth: 275}}>
             <CardContent>
                 <SelectedProductDetailValueAggregate selectedProduct={selectedProduct}/>
                 <Grid container>
                     <Grid item style={{marginRight:6}}>
-                        <DeleteButton id={selectedProduct.id}/>
+                        <DeleteButton modalValues={modalValues} id={selectedProduct.id}/>
                     </Grid>
                     <Grid item>
                         <EditButton selectedProduct={selectedProduct}/>

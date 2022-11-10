@@ -74,7 +74,7 @@ export default ({products}: {
             </StyledTableContainer>
 
             {modalValues.visible && selectedProduct && <ProductDialog modalValues={modalValues}>
-                    <SelectedProductDetailCard selectedProduct={selectedProduct}/>
+                    <SelectedProductDetailCard modalValues={modalValues}selectedProduct={selectedProduct}/>
             </ProductDialog>
             }
         </>
