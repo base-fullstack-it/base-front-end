@@ -37,10 +37,8 @@ export default () => {
                 Add Product
             </Typography>
         </Grid> <Grid container
-
                       display={"flex"}
                       justifyContent="center"
-
                       spacing={2}
     >
         <ProductFormik
