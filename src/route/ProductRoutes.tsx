@@ -7,7 +7,7 @@ export default () => {
     return (
         <Routes>
             <Route index element={<ProductListPage/>} />
-            <Route path="create_update" element={<ProductAppendPage/>}/>
+            <Route path="add" element={<ProductAppendPage/>}/>
             <Route path="update" element={<ProductUpdatePage/>}/>
         </Routes>
     )
