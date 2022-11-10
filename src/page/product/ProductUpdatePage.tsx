@@ -1,18 +1,16 @@
 import ProductFormik, {ProductFormValuesInterface} from "../../component/product/ProductFormik";
 import {useAddProductMutation} from "../../redux/api_slice/productApiSlice";
-import {useLocation} from "react-router-dom";
-import SelectedProductDetailCard from "../../component/product/detail/SelectedProductDetailCard";
 import {useAppSelector} from "../../redux/hooks";
 import { selectProduct} from "../../redux/slice/productSlice";
 import SelectedProductDetailValueAggregate from "../../component/product/detail/SelectedProductDetailValueAggregate";
 import {Container, Grid, Typography} from "@mui/material";
-import React from "react";
+import React, {useEffect} from "react";
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 export default () => {
-    // const {state} = useLocation();
-    // const {selectedProduct} = state;
     const selectedProduct = useAppSelector(selectProduct);
-
+    const navigate = useNavigate();
     const [
         mutation,
         {
@@ -36,6 +34,14 @@ export default () => {
         formData.append('meta-data', jsonBody);
         await mutation(formData);
     };
+    useEffect(() => {
+        if (isError) toast.error((error as any).data.message);
+    }, [isError]);
+    useEffect(() => {
+        if (!isSuccess) return;
+        toast.success("Product successfully updated");
+        navigate("/product");
+    }, [isSuccess]);
     return <Container style={{marginTop:25}}>
         <Grid container style={{flexDirection:"row"}} >
         <Grid item>

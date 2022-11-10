@@ -1,6 +1,4 @@
 import ProductFormik, {ProductFormValuesInterface} from "../../component/product/ProductFormik";
-import {SignupFormValuesInterface} from "../../component/auth/SignupFormik";
-import {useLoginUserMutation} from "../../redux/api_slice/authApiSlice";
 import {useAddProductMutation} from "../../redux/api_slice/productApiSlice";
 import {Grid, Typography} from "@mui/material";
 import React, {useEffect} from "react";

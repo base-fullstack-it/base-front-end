@@ -1,10 +1,8 @@
-import {useNavigate} from "react-router-dom";
 import {Container, Typography} from "@mui/material";
 import {useProductsQuery} from "../../redux/api_slice/productApiSlice";
 import ProductListMUITable from "../../component/product/ProductListMUITable";
 
 export default () => {
-    const navigate = useNavigate();
     const {
         data,isLoading
     } = useProductsQuery();
