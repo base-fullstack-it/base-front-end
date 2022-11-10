@@ -27,7 +27,14 @@ function App() {
               <BrowserRouter>
                   <Navbar/>
                   <Routes>
+                      {
+                          user && user.token ?
                       <Route path="/" element={<Navigate to="/product" replace />} />
+                              :
+                              <Route path="/" element={<Navigate to="/login" replace />} />
+                      }
+
+                      <Route path="/" element={<Navigate to="/login" replace />} />
                       {/* public routes */}
                       <Route element={<RequireNoAuth />}>
                           <Route path="/login" element={<LoginPage/>}/>
