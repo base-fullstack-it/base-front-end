@@ -4,5 +4,14 @@ import {useDeleteProductMutation} from "../../../redux/api_slice/productApiSlice
 export default ({id}:{id:string}) => {
     const [mutation] = useDeleteProductMutation();
 
-return <Button variant={"contained"} color={"warning"} onClick={()=>mutation(id)}>DELETE</Button>
+    const handleClick = () => {
+        const confirmation = window.confirm(" Are you sure you want to delete this product?");
+        if(confirmation){
+            mutation(id);
+        }
+
+
+    }
+
+return <Button variant={"contained"} color={"warning"} onClick={handleClick}>DELETE</Button>
 }
