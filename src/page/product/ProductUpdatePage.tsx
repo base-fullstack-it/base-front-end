@@ -38,6 +38,7 @@ export default () => {
         {selectedProduct && <SelectedProductDetailValueAggregate selectedProduct={selectedProduct}/>}
         <ProductFormik
             alterProduct={updateAddProduct}
+            isUpdateForm={true}
         />
     </>
 }

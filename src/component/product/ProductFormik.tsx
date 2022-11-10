@@ -31,6 +31,7 @@ const initialFormState = {
 }
 interface ProductFormInterface{
     alterProduct(values:ProductFormValuesInterface): Promise<void>;
+    isUpdateForm:boolean;
 }
 
 const validationSchema = object({
@@ -39,7 +40,7 @@ const validationSchema = object({
     referenceNumber: number().required("Reference Number required"),
     country: string().required("Country required"),
 })
-export default ({alterProduct}:ProductFormInterface) => {
+export default ({alterProduct,isUpdateForm}:ProductFormInterface) => {
     const [open, setOpen] = useState(false)
 
     // actions = { setSubmitting, resetForm, isSubmitting }
@@ -69,7 +70,7 @@ export default ({alterProduct}:ProductFormInterface) => {
             >
                 <Formik
                     initialValues={initialFormState}
-                    validationSchema={validationSchema}
+                    validationSchema={!isUpdateForm ? validationSchema : null}
                     onSubmit={submitHandler}
                 >
                     {

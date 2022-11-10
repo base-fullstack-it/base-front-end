@@ -29,6 +29,7 @@ export default () => {
     return <>
         <ProductFormik
             alterProduct={updateAddProduct}
+            isUpdateForm={false}
         />
     </>
 }
