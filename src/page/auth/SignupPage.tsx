@@ -21,7 +21,6 @@ export default () =>{
         },
     ] = useRegisterUserMutation();
     useEffect(()=>{
-        // if(data?.access_token)console.log(data, 'data from get AppAccessToken from auth')
         if(data?.access_token) dispatch(setUser({
             name:"app",
             token:data.access_token,
@@ -30,10 +29,7 @@ export default () =>{
     },[data]);
 
     const handleRegister =  (values:SignupFormValuesInterface) => {
-        console.log(values,'VALORES')
         registerUser(values);
-
-
     };
     useEffect(() => {
         if (isRegisterError) toast.error((registerError as any).data.message);
