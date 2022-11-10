@@ -5,6 +5,7 @@ import {Mesh} from "three";
 import PointCloudInput from "../../component/point_cloud/PointCloudInput";
 import PointCloudLoader from "../../component/point_cloud/PointCloudLoader";
 import PointCloudIframe from "../../component/point_cloud/PointCloudIframe";
+import {Container, Typography} from "@mui/material";
 
 function Cube() {
     const meshRef = useRef<Mesh>(null);
@@ -37,11 +38,11 @@ export default () => {
         // console.log('value is:', event.target.value); //fake path
         const fReader = new FileReader();
         fReader.readAsDataURL(event.target.files[0]);
-        fReader.onloadend = function(ev:ProgressEvent<FileReader>){
-            if(!ev.target)return;
-            if(!ev.target.result) return;
+        fReader.onloadend = function (ev: ProgressEvent<FileReader>) {
+            if (!ev.target) return;
+            if (!ev.target.result) return;
             // var img = document.getElementById("yourImgTag");
-            console.log(ev.target.result,"RESULTAAA")
+            console.log(ev.target.result, "RESULTAAA")
             setUrl(ev.target.result);
             // img.src = event.target.result;
         }
@@ -71,6 +72,11 @@ export default () => {
         //         </Suspense>
         //     </Canvas>
         // </>
-        <PointCloudIframe/>
+        <Container style={{marginTop:20}}>
+            <Typography style={{margin:10}}>
+                Drag and drop a file in order to perform actions
+            </Typography>
+            <PointCloudIframe/>
+        </Container>
     );
 }

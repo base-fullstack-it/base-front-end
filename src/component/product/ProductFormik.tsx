@@ -57,17 +57,6 @@ export default ({alterProduct,isUpdateForm}:ProductFormInterface) => {
     }
 
     return (
-        // <div className={classes.root}>
-            <Grid container
-                  style={{marginTop:"5em"}}
-                  display={"flex"}
-                  // width={"100%"}
-                  justifyContent="center"
-                  spacing={2}
-
-                  // rowSpacing={10}
-                  // columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            >
                 <Formik
                     initialValues={initialFormState}
                     validationSchema={!isUpdateForm ? validationSchema : null}
@@ -76,12 +65,7 @@ export default ({alterProduct,isUpdateForm}:ProductFormInterface) => {
                     {
                         ({ isSubmitting,setFieldValue }) => (
                             <Form>
-                                    <Grid p={1} item >
-                                        <Typography align={"center"} style={{fontSize: "2rem" }}
-                                        >
-                                            Add Or Update Product
-                                        </Typography>
-                                    </Grid>
+
                                     <Grid p={1} item>
                                         <TextFieldWrapper
                                             name='name'
@@ -105,11 +89,6 @@ export default ({alterProduct,isUpdateForm}:ProductFormInterface) => {
                                         />
                                     </Grid>
                                     <Grid p={1} item>
-                                        {/*<TextFieldWrapper*/}
-                                        {/*    name='country'*/}
-                                        {/*    label="Country"*/}
-                                        {/*    type='select'*/}
-                                        {/*/>*/}
                                         <InputLabel id="demo-simple-select-label">Country</InputLabel>
                                         <SelectField
                                             name={"country"}
@@ -150,7 +129,6 @@ export default ({alterProduct,isUpdateForm}:ProductFormInterface) => {
                         )
                     }
                 </Formik>
-            </Grid>
     )
 
 }

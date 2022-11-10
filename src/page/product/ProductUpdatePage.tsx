@@ -5,6 +5,8 @@ import SelectedProductDetailCard from "../../component/product/detail/SelectedPr
 import {useAppSelector} from "../../redux/hooks";
 import { selectProduct} from "../../redux/slice/productSlice";
 import SelectedProductDetailValueAggregate from "../../component/product/detail/SelectedProductDetailValueAggregate";
+import {Grid, Typography} from "@mui/material";
+import React from "react";
 
 export default () => {
     // const {state} = useLocation();
@@ -37,6 +39,12 @@ export default () => {
     return <>
         {/*{console.log(selectedProduct,"SELECTADO")}*/}
         {selectedProduct && <SelectedProductDetailValueAggregate selectedProduct={selectedProduct}/>}
+        <Grid p={1} item >
+            <Typography align={"center"} style={{fontSize: "2rem" }}
+            >
+                Update Product
+            </Typography>
+        </Grid>
         <ProductFormik
             alterProduct={updateAddProduct}
             isUpdateForm={true}

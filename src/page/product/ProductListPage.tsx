@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import {Button} from "@mui/material";
+import {Button, Container, Typography} from "@mui/material";
 import {useProductsQuery} from "../../redux/api_slice/productApiSlice";
 import ProductListMUITable from "../../component/product/ProductListMUITable";
 
@@ -9,9 +9,12 @@ export default () => {
         data,isLoading
     } = useProductsQuery();
 
-    return <>
+    return <Container style={{marginTop:20}}>
+        <Typography style={{margin:10}}>
+            Click on a row in order to see the image and to perform an action on the product
+        </Typography>
 
         <ProductListMUITable products={data}/>
 
-    </>
+    </Container>
 }
