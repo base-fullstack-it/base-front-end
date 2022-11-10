@@ -44,7 +44,9 @@ export const productApiSlice = apiWithTag.injectEndpoints(
                     if (response.error) throw response.error;
                     return response.data ? { data: response.data } : { error: response.error };
                 },
-            }),
+            invalidatesTags: ['Product'],
+
+        }),
 
 
 
