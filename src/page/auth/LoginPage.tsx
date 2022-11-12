@@ -34,7 +34,11 @@ export default () =>{
 
     }
     useEffect(() => {
-        if (isLoginError) toast.error((loginError as any).data.message);
+
+        if(isLoginError) {
+            console.log(loginError,"REACHED THE ERROR")
+            toast.error((loginError as any).data.error_description);
+        }
     }, [isLoginError]);
 
     useEffect(() => {

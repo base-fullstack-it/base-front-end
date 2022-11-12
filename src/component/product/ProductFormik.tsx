@@ -105,7 +105,7 @@ export default ({alterProduct,isUpdateForm}:ProductFormInterface) => {
 
                                         </SelectField>
                                         <Grid item p={1}>
-                                        <InputLabel>Image:</InputLabel>
+                                        <InputLabel>Image Or File:</InputLabel>
                                             <Input id={"file"} name={"file"} type={"file"}onChange={(event) => {
                                                 // @ts-ignore
                                                 setFieldValue("file", event.currentTarget.files[0]);

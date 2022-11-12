@@ -1,12 +1,18 @@
 import {Container, Typography} from "@mui/material";
 import {useProductsQuery} from "../../redux/api_slice/productApiSlice";
 import ProductListMUITable from "../../component/product/ProductListMUITable";
+import {useEffect} from "react";
+import {toast} from "react-toastify";
 
 export default () => {
     const {
-        data,isLoading
+        data,isLoading, isError, error
     } = useProductsQuery();
-
+    useEffect(() => {
+        if (!isError) return;
+        toast.error("Something went wrong! Please contact customer support");
+        console.log(error)
+    }, [isError]);
     return <Container style={{marginTop:20}}>
 
         <Typography style={{margin:10}}>

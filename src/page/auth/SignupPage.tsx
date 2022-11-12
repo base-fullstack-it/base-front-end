@@ -32,7 +32,8 @@ export default () =>{
         registerUser(values);
     };
     useEffect(() => {
-        if (isRegisterError) toast.error((registerError as any).data.message);
+        if (!isRegisterError) return;
+        toast.error("Registration unsuccessful, Please contact customer support");
     }, [isRegisterError]);
     useEffect(() => {
         if (!isRegisterSuccess) return;

@@ -32,7 +32,9 @@ export default () => {
     };
 
     useEffect(() => {
-        if (isError) toast.error((error as any).data.message);
+        if (!isError) return;
+        toast.error("Something went wrong! Please contact customer support");
+        console.log(error)
     }, [isError]);
     useEffect(() => {
         if (!isSuccess) return;
