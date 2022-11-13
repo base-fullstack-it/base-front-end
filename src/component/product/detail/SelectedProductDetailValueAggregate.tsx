@@ -20,7 +20,9 @@ export default ({selectedProduct}: { selectedProduct: Product }) =>{
                 <img alt={`${selectedProduct!.name} : ${selectedProduct!.name}`}
                      style={{ width: '300px', height: '300px' }}
                      // src={`${API_HOST}${selectedProduct!.imageLocation}`}/>
-                     src={data}/>
+                     // src={data}/>
+                    // @ts-ignore
+                     src={btoa(String.fromCharCode(...new Uint8Array(data)))}/>
             </CardMedia>
         }
     </>
