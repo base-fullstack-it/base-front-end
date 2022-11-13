@@ -21,14 +21,10 @@ export const productApiSlice = apiWithTag.injectEndpoints(
             query: (id) => `product/${id}`,
             providesTags: ["Product"],
         }),
-        // addProduct: builder.mutation<{}, ProductFormValuesInterface>({
-        //     query: (product) => ({
-        //         url: "product",
-        //         method: "POST",
-        //         body: product,
-        //     }),
-        //     invalidatesTags: ["Product"],
-        // }),
+        presignedProductUrl: builder.query<string, string>({
+            query: (imageLocation) => `product/${imageLocation}`,
+            providesTags: ["Product"],
+        }),
 
         addProduct: builder.mutation({
                 async queryFn(formData, _queryApi, _extraOptions, fetchWithBQ) {
@@ -72,5 +68,6 @@ export const productApiSlice = apiWithTag.injectEndpoints(
 export const {
     useAddProductMutation,
     useProductsQuery,
-    useDeleteProductMutation
+    useDeleteProductMutation,
+    usePresignedProductUrlQuery
 } = productApiSlice;
