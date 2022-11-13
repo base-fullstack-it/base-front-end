@@ -22,6 +22,13 @@ export const productApiSlice = apiWithTag.injectEndpoints(
             providesTags: ["Product"],
         }),
         presignedProductUrl: builder.query<string, string>({
+            query: (imageLocation) => ({
+                url: `product/${imageLocation}`,
+                // This is the same as passing 'text'
+                responseHandler: (response) => response.text(),
+            }),
+        }),
+        presignedFileProductUrl: builder.query<string, string>({
             query: (imageLocation) => `product/getbyte/${imageLocation}`
         }),
 
@@ -68,5 +75,6 @@ export const {
     useAddProductMutation,
     useProductsQuery,
     useDeleteProductMutation,
-    usePresignedProductUrlQuery
+    usePresignedProductUrlQuery,
+    usePresignedFileProductUrlQuery
 } = productApiSlice;
