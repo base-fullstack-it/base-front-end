@@ -21,6 +21,7 @@ export interface ProductFormValuesInterface {
     referenceNumber:string | null;
     country:string | null;
     file?:any;
+    anyFile?:any;
     id?: string;
 }
 const initialFormState = {
@@ -109,6 +110,13 @@ export default ({alterProduct,isUpdateForm}:ProductFormInterface) => {
                                             <Input id={"file"} name={"file"} type={"file"} inputProps={{ accept: 'image/*' }} onChange={(event) => {
                                                 // @ts-ignore
                                                 setFieldValue("file", event.currentTarget.files[0]);
+                                            }} />
+                                        </Grid>
+                                        <Grid item p={1}>
+                                        <InputLabel>File</InputLabel>
+                                            <Input id={"file"} name={"anyFile"} type={"file"}  onChange={(event) => {
+                                                // @ts-ignore
+                                                setFieldValue("anyFile", event.currentTarget.files[0]);
                                             }} />
                                         </Grid>
                                     </Grid>

@@ -26,6 +26,10 @@ export default () => {
             formData.append('file', values.file);
             delete values.file;
         }
+        if(values.anyFile){
+            formData.append('anyFile', values.anyFile);
+            delete values.anyFile;
+        }
         const jsonBody = JSON.stringify(values);
         formData.append('meta-data', jsonBody);
         await mutation(formData);

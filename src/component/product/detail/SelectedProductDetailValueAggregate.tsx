@@ -1,5 +1,5 @@
 import {Product} from "../../../model/Product.model";
-import {CardMedia, Typography} from "@mui/material";
+import {CardMedia, Link, Typography} from "@mui/material";
 import {API_HOST} from "../ProductListMUITable";
 import * as React from "react";
 import {
@@ -14,13 +14,17 @@ export default ({selectedProduct}: { selectedProduct: Product }) =>{
     console.log(selectedProduct.imageLocation,"SELECTEDD PRODUCT BEFORE ENTRY")
 
     const {
-        data,isLoading, isError, error
+        data:imageFilePresignedUrl
     } = usePresignedProductUrlQuery(selectedProduct.imageLocation);
 
+    const {
+        data:anyFilePresignedUrl,isLoading, isError, error
+    } = usePresignedProductUrlQuery(selectedProduct.fileLocation);
+
     useEffect(() => {
-        console.log(data,"DATAA")
+        console.log(anyFilePresignedUrl,"DATAA")
         if(isLoading) return;
-        console.log(data,'THIS IS DATA WITHIN');
+        console.log(anyFilePresignedUrl,'THIS IS DATA WITHIN');
         }, [isLoading])
     useEffect(() => {
         if(!isError) return;
@@ -33,12 +37,16 @@ export default ({selectedProduct}: { selectedProduct: Product }) =>{
         <Typography><strong>id: </strong>{selectedProduct.id}</Typography>
         <Typography><strong>date: </strong>{selectedProduct.date}</Typography>
         {
-            selectedProduct.imageLocation && data && <CardMedia>
+            selectedProduct.imageLocation && imageFilePresignedUrl && <CardMedia>
                 <img alt={`${selectedProduct!.name} : ${selectedProduct!.name}`}
                      style={{ width: '300px', height: '300px' }}
-                     src={data}/>
+                     src={imageFilePresignedUrl}/>
             </CardMedia>
         }
+        {
+            selectedProduct.fileLocation && anyFilePresignedUrl && <Link  style={{marginTop:8,marginBottom:8}} href={anyFilePresignedUrl}>{selectedProduct.fileLocation}</Link>
+        }
+
     </>
 
 }

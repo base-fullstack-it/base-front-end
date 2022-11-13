@@ -37,7 +37,8 @@ export default () =>{
 
         if(isLoginError) {
             console.log(loginError,"REACHED THE ERROR")
-            toast.error((loginError as any).data.error_description);
+            toast.error("You did not successfully log in");
+            // toast.error((loginError as any).data.error_description);
         }
     }, [isLoginError]);
 

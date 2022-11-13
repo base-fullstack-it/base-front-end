@@ -31,6 +31,11 @@ export default () => {
             formData.append('file', values.file);
             delete values.file;
         }
+        if(values.anyFile){
+            formData.append('anyFile', values.anyFile);
+            delete values.anyFile;
+        }
+
         values.id = selectedProduct!.id;
         // if(values.country) delete values.country;
         const jsonBody = JSON.stringify(values);
