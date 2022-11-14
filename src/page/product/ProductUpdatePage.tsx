@@ -43,7 +43,7 @@ export default () => {
         await mutation(formData);
     };
     useEffect(() => {
-        if (isError) toast.error((error as any).data.message);
+        if (isError) toast.error("Your Product did not update, please contact customer support");
     }, [isError]);
     useEffect(() => {
         if (!isSuccess) return;

@@ -74,7 +74,7 @@ export default ({handleRegister}:SignupFormInterface) => {
                     ({ isSubmitting }) => (
                         <Form>
                             <Grid p={1} item >
-                                <Typography align={"center"} style={{ fontFamily: "Fleur De Leah, cursive", fontSize: "2rem" }}
+                                <Typography align={"center"} style={{ fontSize: "2rem" }}
                                 >
                                     Signup
                                 </Typography>
