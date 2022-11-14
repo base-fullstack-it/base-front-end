@@ -11,8 +11,6 @@ import {useLoginUserMutation} from "../../../redux/api_slice/authApiSlice";
 import {useEffect} from "react";
 
 export default ({selectedProduct}: { selectedProduct: Product }) =>{
-    console.log(selectedProduct.imageLocation,"SELECTEDD PRODUCT BEFORE ENTRY")
-
     const {
         data:imageFilePresignedUrl
     } = usePresignedProductUrlQuery(selectedProduct.imageLocation);
@@ -25,17 +23,22 @@ export default ({selectedProduct}: { selectedProduct: Product }) =>{
         console.log(anyFilePresignedUrl,"DATAA")
         if(isLoading) return;
         console.log(anyFilePresignedUrl,'THIS IS DATA WITHIN');
+
         }, [isLoading])
     useEffect(() => {
         if(!isError) return;
         console.log(error);
     },[isError])
+    useEffect(() =>{
+        console.log(selectedProduct,"PRODUCTOLOL");
+    },[])
 
     return <>
         <Typography fontSize={"2rem"}><strong>Name: </strong>{selectedProduct.name}</Typography>
         <Typography><strong>Info: </strong>{selectedProduct.info}</Typography>
         <Typography><strong>id: </strong>{selectedProduct.id}</Typography>
         <Typography><strong>date: </strong>{selectedProduct.date}</Typography>
+        <Typography><strong>Country: </strong>{selectedProduct.country}</Typography>
         {
             selectedProduct.imageLocation && imageFilePresignedUrl && <CardMedia>
                 <img alt={`${selectedProduct!.name} : ${selectedProduct!.name}`}

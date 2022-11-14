@@ -27,6 +27,7 @@ export default (props: LazyQueryDialogProps) => {
         onClose={modalValues.toggle}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        style={{ minHeight:850, minWidth:700}}
     >
         {children}
     </Dialog>
