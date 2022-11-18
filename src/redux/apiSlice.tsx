@@ -8,7 +8,8 @@ const baseQuery = fetchBaseQuery(
     {
             mode:"cors",
             credentials: 'include',
-            baseUrl:process.env.REACT_APP_API_URL //+ "v1/"
+            baseUrl:process.env.REACT_APP_API_URL, //+ "v1/"
+
     })
 const dynamicBaseQuery: BaseQueryFn<
     string | FetchArgs,
@@ -34,8 +35,8 @@ const dynamicBaseQuery: BaseQueryFn<
     const queryParamsMap:any = {};
     queryParamsMap.access_token = appState.auth.token;
     const queryParamsString = qs.stringify(queryParamsMap);
-    // console.log(queryParamsString);
-    const adjustedUrl = vers + urlEnd + "?" + queryParamsString;
+    // const adjustedUrl = vers + urlEnd + "?" + queryParamsString;
+    const adjustedUrl = urlEnd + "?" + queryParamsString;
     // console.log(adjustedUrl,'adjustedUrladjustedUrl')s
     const adjustedArgs = typeof args === 'string' ? adjustedUrl : { ...args, url: adjustedUrl }
     // console.log(adjustedArgs,'adjustedArgs FOR APP')
@@ -46,6 +47,7 @@ const dynamicBaseQuery: BaseQueryFn<
 
 export const apiSlice = createApi({
     reducerPath:'api',
-    baseQuery:dynamicBaseQuery,
+    // baseQuery:dynamicBaseQuery,
+    baseQuery,
     endpoints: (builder)=>({})
 })

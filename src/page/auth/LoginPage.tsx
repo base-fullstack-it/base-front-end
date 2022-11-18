@@ -25,12 +25,12 @@ export default () =>{
     const handleLogin = async (values:LoginFormValuesInterface) => {
         console.log(values,"SUBMITTER");
         const data = await loginUser({...values}).unwrap();
-        await dispatch(setUser(
-            {
-                name:"user",
-                token:data.access_token,
-                token_type: ACCESS_TOKEN_TYPES.user}
-        ))
+        // await dispatch(setUser(
+        //     {
+        //         name:"user",
+        //         token:data.access_token,
+        //         token_type: ACCESS_TOKEN_TYPES.user}
+        // ))
 
     }
     useEffect(() => {

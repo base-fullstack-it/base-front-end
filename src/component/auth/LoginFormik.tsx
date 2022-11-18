@@ -10,11 +10,11 @@ import {useNavigate} from "react-router-dom";
 import {useAppDispatch} from "../../redux/hooks";
 
 export interface LoginFormValuesInterface {
-    email:string;
+    username:string;
     password:string;
 }
 const initialFormState = {
-    email: "",
+    username: "",
     password:"",
 }
 interface LoginFormInterface{
@@ -22,7 +22,8 @@ interface LoginFormInterface{
 }
 
 const validationSchema = object({
-    email: string().email("Invalid email").required("Email required"),
+    // email: string().email("Invalid email").required("Email required"),
+    username: string().required("Username required"),
     password: string().required("Password required"),
 })
 export default ({loginUser}:LoginFormInterface) => {
@@ -70,9 +71,9 @@ export default ({loginUser}:LoginFormInterface) => {
 
                                     <Grid p={1} item>
                                         <TextFieldWrapper
-                                            name='email'
-                                            label="Email"
-                                            type='email'
+                                            name='username'
+                                            label="Username"
+                                            type='text'
                                         />
                                     </Grid>
                                     <Grid p={1} item>
