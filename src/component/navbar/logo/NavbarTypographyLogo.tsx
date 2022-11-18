@@ -5,7 +5,7 @@ export default () => {
     return (
         <>
             <Typography sx={{fontWeight: "bold", fontSize:28}}>
-                R Squared
+                Template
             {/*<PrecisionManufacturingIcon/>*/}
 
             </Typography>

@@ -8,13 +8,11 @@ import SnackbarWrapper from "../formik/Snackbar";
 
 
 export interface SignupFormValuesInterface{
-    name:string;
-    email:string;
+    username:string;
     password:string;
 }
 const initialFormState = {
-    name: "",
-    email: "",
+    username: "",
     password:"",
 }
 interface SignupFormInterface{
@@ -22,8 +20,8 @@ interface SignupFormInterface{
 }
 
 const validationSchema = object({
-    name: string().required("Name required"),
-    email: string().email("Invalid email").required("Email required"),
+    username: string().required("Name required"),
+    // email: string().email("Invalid email").required("Email required"),
     password: string()
         .required("Password required")
         .matches(
@@ -81,18 +79,18 @@ export default ({handleRegister}:SignupFormInterface) => {
                             </Grid>
                             <Grid p={1} item>
                                 <TextFieldWrapper
-                                    name='name'
-                                    label='Name'
+                                    name='username'
+                                    label='Username'
                                     type='text'
                                 />
                             </Grid>
-                            <Grid p={1} item>
-                                <TextFieldWrapper
-                                    name='email'
-                                    label="Email"
-                                    type='email'
-                                />
-                            </Grid>
+                            {/*<Grid p={1} item>*/}
+                            {/*    <TextFieldWrapper*/}
+                            {/*        name='email'*/}
+                            {/*        label="Email"*/}
+                            {/*        type='email'*/}
+                            {/*    />*/}
+                            {/*</Grid>*/}
                             <Grid p={1} item>
                                 <TextFieldWrapper
                                     name='password'

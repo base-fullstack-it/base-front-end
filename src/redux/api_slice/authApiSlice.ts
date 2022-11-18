@@ -9,7 +9,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     loginUser: builder.mutation({
       query:(body: { email: string; password: string }) => ({
-        url:'oauth/token',
+        url:'token',
         method:'POST',
         headers: {
           'Authorization': `Basic ${base64.encode('appreciate:appreciate')}`,
@@ -36,13 +36,12 @@ export const authApiSlice = apiSlice.injectEndpoints({
     }),
     registerUser: builder.mutation({
       query: (body: {
-        name: string;
-        email: string;
+        username: string;
         password: string;
       }) => {
         return {
 
-          url: "user",
+          url: "register",
           method: "post",
           body: {...body},
         };

@@ -8,7 +8,7 @@ import {ACCESS_TOKEN_TYPES, setUser} from "../../redux/slice/authSlice";
 import {toast} from "react-toastify";
 
 export default () =>{
-    const {data,isLoading} = useGetAppAccessTokenQuery();
+    // const {data,isLoading} = useGetAppAccessTokenQuery();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [
@@ -21,12 +21,14 @@ export default () =>{
         },
     ] = useRegisterUserMutation();
     useEffect(()=>{
-        if(data?.access_token) dispatch(setUser({
-            name:"app",
-            token:data.access_token,
-            token_type: ACCESS_TOKEN_TYPES.app}
-        ))
-    },[data]);
+        // if(data?.access_token) dispatch(setUser({
+        //     name:"app",
+        //     token:data.access_token,
+        //     token_type: ACCESS_TOKEN_TYPES.app}
+        // ))
+    },[
+        // data
+    ]);
 
     const handleRegister =  (values:SignupFormValuesInterface) => {
         registerUser(values);
