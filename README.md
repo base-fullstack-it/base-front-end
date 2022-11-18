@@ -1,6 +1,3 @@
-## Ranpak
-Welcome to ranpak
-
 ## local host
 
 go into .env.development  and ensure it is direct to the local host that is running your environment
